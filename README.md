@@ -20,22 +20,20 @@
     - Create deployment profile
     - Deploy to azure
 
-- Automatic deployment - bat
-     file for deployment …
+- Automatic deployment - bat file for deployment _
 
- 
-
-    echo ####### START
-    set buildconfig=Release
-    set deployconfig=xxxx
-    set deploypwd=xxxxxxxxxxx
-    "C:\ProgramFiles (x86)\MSBuild\14.0\Bin\msbuild.exe" ASS\ASS.csproj /T:Clean;Rebuild;Publish /p:Configuration=%%buildconfig%% /p:DeployOnBuild=true /p:PublishProfile=%%deployconfig%% /p:Password=%%deploypwd%%
-    echo ####### DONE
+```bat
+echo ####### START
+set buildconfig=Release
+set deployconfig=xxxx
+set deploypwd=xxxxxxxxxxx
+"C:\ProgramFiles (x86)\MSBuild\14.0\Bin\msbuild.exe" ASS\ASS.csproj /T:Clean;Rebuild;Publish /p:Configuration=%%buildconfig%% /p:DeployOnBuild=true /p:PublishProfile=%%deployconfig%% /p:Password=%%deploypwd%%
+echo ####### DONE
+```
 
 - Create VNET for web app
     - Select web app
-    - Networking -&gt; create VNET
-      … (setup)
+    - Networking -&gt; create VNET … (setup)
     - Networking -&gt; setup -&gt;
       add vnet
 
