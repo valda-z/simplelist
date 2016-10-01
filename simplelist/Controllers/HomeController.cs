@@ -31,7 +31,11 @@ namespace simplelist.Controllers
             var client = new RestClient(Properties.Settings.Default.GEOIPURL);
             var request = new RestRequest("/" + ip, Method.GET);
             var queryResult = client.Execute<GeoIPHelper.RootObject>(request).Data;
-            if (queryResult.Data == null)
+            if (queryResult == null)
+            {
+                return string.Format(" Your IP [{0}] - VNET not connected", ip);
+            }
+            else if (queryResult.Data == null)
             {
                 return string.Format(" Your IP [{0}] - invalid search argument", ip);
             }
@@ -58,7 +62,13 @@ namespace simplelist.Controllers
                 ViewBag.LinuxData = e.ToString();
             }
 
-            return View(new MyModel().MyEntitySamples.OrderBy(e => e.Name));
+            var cx = new MyModel();
+            var itm = new MyEntitySample();
+            itm.Name = ViewBag.LinuxData;
+            cx.MyEntitySamples.Add(itm);
+            cx.SaveChanges();
+
+            return View(cx.MyEntitySamples.OrderByDescending(e => e.Id).Take(8));
         }
 
         public ActionResult About()
