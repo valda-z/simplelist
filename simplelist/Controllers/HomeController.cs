@@ -11,6 +11,17 @@ namespace simplelist.Controllers
 {
     public class HomeController : Controller
     {
+        private string getIP(HttpRequestBase request)
+        {
+            if (request.ServerVariables["HTTP_X_FORWARDED_FOR"] == null)
+            {
+                return "not-found";
+            }
+            else
+            {
+                return request.ServerVariables["HTTP_X_FORWARDED_FOR"].Split(':')[0];
+            }
+        }
         private string getGeoIPData(string ip)
         {
             if (ip == "::1")
@@ -26,11 +37,11 @@ namespace simplelist.Controllers
             }
             else
             {
-                return string.Format(" Your IP [{0}] - {1}, {2}, {3}/{4}", 
+                return string.Format(" Your IP [{0}] - {1}, {2}, {3}/{4}",
                     ip,
                     queryResult.Data.Country.Names.en,
-                    queryResult.Data.City.Names.en,
-                    queryResult.Data.Location.Latitude, 
+                    (queryResult.Data.City.Names == null ? "Unknown-City" : queryResult.Data.City.Names.en),
+                    queryResult.Data.Location.Latitude,
                     queryResult.Data.Location.Longitude);
             }
         }
@@ -40,9 +51,12 @@ namespace simplelist.Controllers
             ViewBag.LinuxData = "VNET not connected!";
             try
             {
-                ViewBag.LinuxData = getGeoIPData(Request.UserHostAddress);
+                ViewBag.LinuxData = getGeoIPData(getIP(Request));
             }
-            catch { }
+            catch(Exception e)
+            {
+                ViewBag.LinuxData = e.ToString();
+            }
 
             return View(new MyModel().MyEntitySamples.OrderBy(e => e.Name));
         }

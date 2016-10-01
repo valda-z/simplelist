@@ -25,7 +25,7 @@ namespace simplelist.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://104.210.148.152:5000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.1.0.4:5000")]
         public string GEOIPURL {
             get {
                 return ((string)(this["GEOIPURL"]));

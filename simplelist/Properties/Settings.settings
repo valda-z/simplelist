@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="GEOIPURL" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://104.210.148.152:5000</Value>
+      <Value Profile="(Default)">http://10.1.0.4:5000</Value>
     </Setting>
   </Settings>
 </SettingsFile>
