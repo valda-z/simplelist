@@ -45,7 +45,7 @@ echo ####### DONE
         - mkdir geoip
         - cd geoip
         - Docker: `wget -qO- [https://get.docker.com/](https://get.docker.com/) | sh`
-        - Download geoip DB: `wget [http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz](http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz)`
+        - Download geoip DB: `wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz`
         - Unzip: `gzip -d GeoLite2-City.mmdb.gz`
         - Pull image: `docker pull klauspost/geoip-service`
         - Run geoip server: `docker run --rm -p 5000:5000 -v  /home/valda/geoip/GeoLite2-City.mmdb:/data/geodb.mmdb klauspost/geoip-service`
