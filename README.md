@@ -40,10 +40,9 @@ echo ####### DONE
 - Create GeoIP Service host
     - Create linux VM in VNET
         - Ubuntu 16.04
-        - sudo apt update --yes
-       &sudo apt dist-upgrade --yes
-        - mkdir geoip
-        - cd geoip
+            - `sudo apt update --yes && sudo apt dist-upgrade --yes`
+            - `mkdir geoip`
+            - `cd geoip`
         - Docker: `wget -qO- [https://get.docker.com/](https://get.docker.com/) | sh`
         - Download geoip DB: `wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz`
         - Unzip: `gzip -d GeoLite2-City.mmdb.gz`
