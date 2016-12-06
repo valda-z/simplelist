@@ -31,5 +31,15 @@ namespace simplelist.Properties {
                 return ((string)(this["GEOIPURL"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Endpoint=sb://valdasbus.servicebus.windows.net/;SharedAccessKeyName=RootManageSha" +
+            "redAccessKey;SharedAccessKey=FxgbmVowWAedGiP+vxObRfXjzrZlT6+iQESXA2bw2OM=")]
+        public string SERVICEBUS_URI {
+            get {
+                return ((string)(this["SERVICEBUS_URI"]));
+            }
+        }
     }
 }

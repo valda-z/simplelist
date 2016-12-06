@@ -68,6 +68,8 @@ namespace simplelist.Controllers
             cx.MyEntitySamples.Add(itm);
             cx.SaveChanges();
 
+            ServiceBusHelper.SendToAll(itm);
+
             return View(cx.MyEntitySamples.OrderByDescending(e => e.Id).Take(8));
         }
 
