@@ -62,15 +62,7 @@ namespace simplelist.Controllers
                 ViewBag.LinuxData = e.ToString();
             }
 
-            var cx = new MyModel();
-            var itm = new MyEntitySample();
-            itm.Name = ViewBag.LinuxData;
-            cx.MyEntitySamples.Add(itm);
-            cx.SaveChanges();
-
-            ServiceBusHelper.SendToAll(itm);
-
-            return View(cx.MyEntitySamples.OrderByDescending(e => e.Id).Take(8));
+            return View();
         }
 
         public ActionResult About()
